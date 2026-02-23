@@ -104,9 +104,12 @@ export function SoftwareContact() {
                 <Textarea name="message" id="message" required placeholder="Tell us about your project..." rows={5} className="bg-background" />
               </div>
               <Button type="submit" size="lg" className="w-full md:w-auto" disabled={isButtonDisabled}>
-                
+                {isPending ? "Sending..." : "Send Message"}
               </Button>
 
+
+
+              
             </form>
           </CardContent>
         </Card>
