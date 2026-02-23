@@ -22,12 +22,12 @@ export function SoftwareAbout() {
                 <Image
                   src="/company-logo.png"
                   alt="Vexel Logo"
-                  width={64}
-                  height={64}
+                  width={84}
+                  height={84}
                   className="w-16 h-16"
                 />
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">Vexel</h3>
+                  <h3 className="text-2xl font-bold text-foreground">VHMDevelopers</h3>
                   <p className="text-muted-foreground">Software Development</p>
                 </div>
               </div>

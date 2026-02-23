@@ -1,4 +1,5 @@
-import { Code2, Cloud, Server, Smartphone, Globe, Shield } from "lucide-react"
+// 1. Añade Brain, Layers y MonitorSpeaker a las importaciones
+import { Code2, Cloud, Server, Smartphone, Globe, Shield, Brain, Layers, MonitorSpeaker } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 const services = [
@@ -6,6 +7,21 @@ const services = [
     icon: Code2,
     title: "Custom Development",
     description: "Tailored software solutions built from the ground up to meet your specific business needs and requirements.",
+  },
+  {
+    icon: Brain, // Nuevo icono para AI
+    title: "AI Development",
+    description: "Integrating intelligent machine learning models and AI solutions to automate processes and gain insights.",
+  },
+  {
+    icon: Layers, // Nuevo icono para Microservicios
+    title: "Microservices",
+    description: "Scalable and modular architecture design using microservices for highly available and maintainable systems.",
+  },
+  {
+    icon: MonitorSpeaker, // Nuevo icono para Desktop
+    title: "Desktop Applications",
+    description: "Powerful cross-platform desktop software for Windows, macOS, and Linux using modern technologies.",
   },
   {
     icon: Smartphone,
@@ -50,7 +66,8 @@ export function SoftwareServices() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <Card key={service.title} className="bg-card border-border hover:border-primary/50 transition-colors group">
+            /* Aquí ya tienes integrada la animación de hover que añadimos antes */
+            <Card key={service.title} className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg group">
               <CardContent className="p-6">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <service.icon className="h-6 w-6 text-primary" />

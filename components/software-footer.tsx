@@ -16,7 +16,7 @@ export function SoftwareFooter() {
                 height={40}
                 className="w-10 h-10 brightness-0 invert"
               />
-              <span className="text-xl font-semibold">Vexel</span>
+              <span className="text-xl font-semibold">VHMDevelopers</span>
             </Link>
             <p className="text-background/70 max-w-md mb-6 leading-relaxed">
               Building high-quality software solutions for modern businesses. 
@@ -43,6 +43,9 @@ export function SoftwareFooter() {
               <li><Link href="#" className="hover:text-background transition-colors">Web Applications</Link></li>
               <li><Link href="#" className="hover:text-background transition-colors">Cloud Deployment</Link></li>
               <li><Link href="#" className="hover:text-background transition-colors">DevOps</Link></li>
+              <li><Link href="#" className="hover:text-background transition-colors">AI Development</Link></li>
+              <li><Link href="#" className="hover:text-background transition-colors">Desktop Development</Link></li>
+              <li><Link href="#" className="hover:text-background transition-colors">Microservices</Link></li>
             </ul>
           </div>
 
@@ -59,7 +62,7 @@ export function SoftwareFooter() {
 
         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/60">
-            {new Date().getFullYear()} Vexel. All rights reserved.
+            {new Date().getFullYear()} VHMDevelopers. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-background/60">
             <Link href="#" className="hover:text-background transition-colors">Privacy Policy</Link>

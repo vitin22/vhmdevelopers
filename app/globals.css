@@ -110,6 +110,24 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@theme {
+  --animate-pulse-slow: pulseCustom 2s infinite;
+
+  @keyframes pulseCustom {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+}
+
+@keyframes pulseCustom {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.animate-pulse-slow {
+  animation: pulseCustom 2s infinite;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

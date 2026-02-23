@@ -29,7 +29,7 @@ export function SoftwareNavigation() {
             height={40}
             className="w-10 h-10"
           />
-          <span className="text-xl font-semibold text-foreground">Vexel</span>
+          <span className="text-xl font-semibold text-foreground">VHMDevelopers</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

@@ -4,12 +4,14 @@ import { Inter, JetBrains_Mono, Playfair_Display, Montserrat } from 'next/font/g
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { Toaster } from "@/components/ui/sonner"
 
 const _inter = Inter({ subsets: ["latin"] });
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Vexel | Software Development & Deployment',
+  title: 'VHMDevelopers | Software Development & Deployment',
   description: 'We build and deploy high-quality applications. Custom software development, cloud deployment, and DevOps solutions for modern businesses.',
   generator: 'v0.app',
   icons: {
@@ -46,6 +48,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <WhatsAppButton />
+          <Toaster position="top-right" richColors />
+          
         </ThemeProvider>
         <Analytics />
       </body>
