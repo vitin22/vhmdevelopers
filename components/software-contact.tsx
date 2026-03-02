@@ -135,7 +135,7 @@ export function SoftwareContact() {
                 </div>
                 <div>
                   <h3 className="font-medium text-foreground mb-1">Phone</h3>
-                  <p className="text-sm text-muted-foreground">+34 () 123-4567</p>
+                  <p className="text-sm text-muted-foreground">+34 () 641-912915</p>
                 </div>
               </CardContent>
             </Card>
