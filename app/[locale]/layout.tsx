@@ -6,6 +6,10 @@ import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Toaster } from "@/components/ui/sonner"
+import { routing } from "@/i18n/routing"
+import { notFound } from "next/navigation"
+import { getMessages } from "next-intl/server"
+import Providers from "../Providers"; // El puente que creamos antes
 
 const _inter = Inter({ subsets: ["latin"] });
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
@@ -33,13 +37,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string}>;
+};
+
+
+export default async function RootLayout({children, params}: Props) {
+  const { locale } = await params;
+
+  //Validacion de locale
+  if (!routing.locales.includes(locale as any)){
+    notFound();
+  }
+
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale}>
       <body className={`font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -47,7 +62,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Providers messages={messages} locale={locale}>
+
+          
           {children}
+          </Providers>
           <WhatsAppButton />
           <Toaster position="top-right" richColors />
           

@@ -1,0 +1,13 @@
+{
+    "HomePage":
+    {
+        "title": "Bienvenido a mi sitio",
+        "description": "El Framework React para la web",
+        "cta": "Empezar"
+    },
+    "AboutPage": {
+        "title": "Acerca de",
+        "description": "Pagina de Acerca de",
+        "team": "Nuestro Equipo"
+    }
+}
