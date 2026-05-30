@@ -8,8 +8,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useState } from "react" // Importar useState
 import { sendEmail } from "@/app/actions" // Importar la acción
 import { toast } from "sonner" // Importamos toast
+import { useTranslations } from "next-intl"
 
 export function SoftwareContact() {
+  const t = useTranslations("Contact")
   const [isPending, setIsPending] = useState(false)
   const [email, setEmail] = useState("")
 
@@ -32,89 +34,88 @@ export function SoftwareContact() {
       const result = await sendEmail(formData)
       
       if (result.success) {
-        toast.success("¡Mensaje enviado!", {
-          description: "Nos pondremos en contacto contigo lo antes posible.",
+        toast.success(t("toastSuccessTitle"), {
+          description: t("toastSuccessDesc"),
         })
         // Opcional: limpiar el formulario
         const form = document.querySelector('form') as HTMLFormElement
         form?.reset()
       } else {
-        toast.error("Error al enviar", {
-          description: "Hubo un problema con el servicio de correo. Inténtalo más tarde.",
+        toast.error(t("toastErrorTitle"), {
+          description: t("toastErrorDesc"),
         })
       }
     } catch (error) {
-      toast.error("Error inesperado", {
-        description: "Revisa tu conexión a internet.",
+      toast.error(t("toastCatchTitle"), {
+        description: t("toastCatchDesc"),
       })
     } finally {
       setIsPending(false)
     }
   }
-  return (
+ return (
     <section id="contact" className="py-24 px-6 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-3">Contact Us</p>
+          <p className="text-primary font-medium mb-3">{t("badge")}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Let's Build Something Great
+            {t("mainTitle")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your project? Get in touch and let's discuss how we can help bring your ideas to life.
+            {t("mainSubtitle")}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-        <Card className="bg-card border-border">
-          <CardContent className="p-6">
-            {/* Usamos action en lugar de onSubmit */}
-            <form action={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                  <Input name="name" id="name" required placeholder="Your name" className="bg-background" />
-                </div>
-                {/* Campo Email con validación en tiempo real */}
-              <div>
-                <label htmlFor="email" className="...">Email</label>
-                <Input 
-                  name="email" 
-                  id="email" 
-                  type="email" 
-                  required 
-                  placeholder="you@company.com" 
-                  className={`bg-background transition-colors ${
-                    email && !validateEmail(email) ? 'border-red-500 focus-visible:ring-red-500' : ''
-                  }`}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {email && !validateEmail(email) && (
-                  <p className="text-[10px] text-red-500 mt-1">Please enter a valid email address.</p>
-                )}
-              </div>
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
-                <Input name="subject" id="subject" required placeholder="Project inquiry" className="bg-background" />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <Textarea name="message" id="message" required placeholder="Tell us about your project..." rows={5} className="bg-background" />
-              </div>
-              <Button type="submit" size="lg" className="w-full md:w-auto" disabled={isButtonDisabled}>
-                {isPending ? "Sending..." : "Send Message"}
-              </Button>
+            <Card className="bg-card border-border">
+              <CardContent className="p-6">
+                <form action={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">{t("labelName")}</label>
+                      <Input name="name" id="name" required placeholder={t("placeholderName")} className="bg-background" />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">{t("labelEmail")}</label>
+                      <Input 
+                        name="email" 
+                        id="email" 
+                        type="email" 
+                        required 
+                        placeholder={t("placeholderEmail")}
+                        className={`bg-background transition-colors ${
+                          email && !validateEmail(email) ? 'border-red-500 focus-visible:ring-red-500' : ''
+                        }`}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      {email && !validateEmail(email) && (
+                        <p className="text-[10px] text-red-500 mt-1">{t("errorEmail")}</p>
+                      )}
+                    </div>
+                  </div>
 
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2">{t("labelSubject")}</label>
+                    <Input name="subject" id="subject" required placeholder={t("placeholderSubject")} className="bg-background" />
+                  </div>
 
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">{t("labelMessage")}</label>
+                    <Textarea name="message" id="message" required placeholder={t("placeholderMessage")} rows={5} className="bg-background" />
+                  </div>
 
-              
-            </form>
-          </CardContent>
-        </Card>
-      </div>
+                  <Button type="submit" size="lg" className="w-full md:w-auto" disabled={isButtonDisabled}>
+                    {isPending ? t("btnSending") : t("btnSend")}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
 
+          {/* Tarjetas laterales de información de contacto */}
           <div className="space-y-4">
             <Card className="bg-card border-border">
               <CardContent className="p-6 flex items-start gap-4">
@@ -122,7 +123,7 @@ export function SoftwareContact() {
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground mb-1">Email</h3>
+                  <h3 className="font-medium text-foreground mb-1">{t("infoEmail")}</h3>
                   <p className="text-sm text-muted-foreground">vhmdevelopers@gmail.com</p>
                 </div>
               </CardContent>
@@ -134,8 +135,8 @@ export function SoftwareContact() {
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground mb-1">Phone</h3>
-                  <p className="text-sm text-muted-foreground">+34 () 641-912915</p>
+                  <h3 className="font-medium text-foreground mb-1">{t("infoPhone")}</h3>
+                  <p className="text-sm text-muted-foreground">+34 641 91 29 15</p>
                 </div>
               </CardContent>
             </Card>
@@ -146,7 +147,7 @@ export function SoftwareContact() {
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground mb-1">Location</h3>
+                  <h3 className="font-medium text-foreground mb-1">{t("infoLocation")}</h3>
                   <p className="text-sm text-muted-foreground">Barcelona, ES</p>
                 </div>
               </CardContent>

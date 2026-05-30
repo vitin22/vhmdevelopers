@@ -1,13 +1,8 @@
-import { withNextVideo } from "next-video/process";
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
+ 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-  output: 'standalone',
-}
-
-export default withNextVideo(nextConfig);
+const nextConfig = {};
+ 
+export default withNextIntl(nextConfig);

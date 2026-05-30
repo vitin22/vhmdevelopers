@@ -7,22 +7,20 @@ import { SoftwareAbout } from "@/components/software-about"
 import { SoftwareContact } from "@/components/software-contact"
 import { SoftwareFooter } from "@/components/software-footer"
 import { getTranslations } from "next-intl/server"
-import link from 'next/link';
 
-//forzar el renderizado dinamico
+// Forzar el renderizado dinámico para asegurar que el contexto de i18n esté siempre fresco
 export const dynamic = 'force-dynamic';
 
 type Props = {
-  params: Promise<{ locale: string}>;
+  params: Promise<{ locale: string }>;
 };
-
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
 
-  const t = await getTranslations({ locale, namespace: 'HomePage'});
+  // Acceso a traducciones en el lado del servidor
+  const t = await getTranslations({ locale, namespace: 'HomePage' });
 
-  
   return (
     <main className="min-h-screen bg-background">
       <SoftwareNavigation />
@@ -34,5 +32,5 @@ export default async function Home({ params }: Props) {
       <SoftwareContact />
       <SoftwareFooter />
     </main>
-  )
+  );
 }

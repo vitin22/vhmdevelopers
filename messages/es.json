@@ -1,13 +1,150 @@
 {
-    "HomePage":
-    {
-        "title": "Bienvenido a mi sitio",
-        "description": "El Framework React para la web",
-        "cta": "Empezar"
-    },
-    "AboutPage": {
-        "title": "Acerca de",
-        "description": "Pagina de Acerca de",
-        "team": "Nuestro Equipo"
+  "HomePage": {
+    "title": "Bienvenidos a VHM Developers"
+  },
+    "Navigation": {
+    "services": "Servicios",
+    "work": "Nuestro Trabajo",
+    "process": "Proceso",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "getStarted": "Empezar"
+  },
+ "Hero": {
+    "badge": "Construyendo el futuro del software",
+    "titleNormal": "Construimos y Desplegamos",
+    "titleHighlight": " Aplicaciones",
+    "titleScale": " Que Escalan",
+    "description": "Desde el concepto hasta el despliegue, creamos soluciones de software de alto rendimiento. Desarrollo a medida, infraestructura en la nube y experiencia en DevOps para acelerar tu negocio.",
+    "btnStart": "Inicia tu Proyecto",
+    "btnWork": "Ver Nuestro Trabajo",
+    "statApps": "Apps Creadas",
+    "statUptime": "Tiempo en línea"
+  },
+  "Services": {
+    "badge": "Nuestros Servicios",
+    "mainTitle": "Todo lo que Necesitas para Construir y Desplegar",
+    "mainSubtitle": "Desde el concepto inicial hasta el despliegue en producción, ofrecemos servicios de desarrollo de software de extremo a extremo.",
+    "items": {
+      "custom": { "title": "Desarrollo a Medida", "description": "Soluciones de software adaptadas y creadas desde cero para satisfacer las necesidades específicas de tu negocio." },
+      "ai": { "title": "Desarrollo de IA", "description": "Integración de modelos inteligentes de aprendizaje automático para automatizar procesos y obtener datos clave." },
+      "microservices": { "title": "Microservicios", "description": "Diseño de arquitectura escalable y modular para sistemas altamente disponibles y fáciles de mantener." },
+      "desktop": { "title": "Aplicaciones de Escritorio", "description": "Potente software multiplataforma para Windows, macOS y Linux utilizando tecnologías modernas." },
+      "mobile": { "title": "Aplicaciones Móviles", "description": "Apps nativas y multiplataforma para iOS y Android con experiencias de usuario fluidas." },
+      "web": { "title": "Aplicaciones Web", "description": "Aplicaciones web modernas y responsivas utilizando frameworks y tecnologías de vanguardia." },
+      "cloud": { "title": "Despliegue en la Nube", "description": "Infraestructura escalable en AWS, Azure o GCP con pipelines de despliegue automatizados." },
+      "devops": { "title": "DevOps & CI/CD", "description": "Flujos de trabajo optimizados con automatización de integración y despliegue continuos." },
+      "security": { "title": "Seguridad y Cumplimiento", "description": "Prácticas de seguridad de nivel empresarial y cumplimiento de los estándares de la industria." }
     }
+  },
+  "Work": {
+    "badge": "Nuestro Trabajo",
+    "mainTitle": "Proyectos de los que Estamos Orgullosos",
+    "mainSubtitle": "Explora algunos de nuestros trabajos recientes y descubre cómo hemos ayudado a empresas a transformar sus ideas en realidad.",
+    "projects": {
+      "financeflow": {
+        "category": "Aplicación Web",
+        "description": "Una plataforma integral de gestión financiera con analíticas en tiempo real e informes automatizados."
+      },
+      "healthtrack": {
+        "category": "Aplicación Móvil",
+        "description": "Aplicación móvil de monitoreo de salud con integración de dispositivos wearables e información impulsada por IA."
+      },
+      "logichain": {
+        "category": "Empresarial",
+        "description": "Sistema de gestión de la cadena de suministro con integración de IoT y analíticas predictivas."
+      }
+    }
+  },
+  "Process": {
+    "badge": "Nuestro Proceso",
+    "mainTitle": "Cómo Trabajamos",
+    "mainSubtitle": "Una metodología comprobada que garantiza la entrega exitosa del proyecto, en cada ocasión.",
+    "steps": {
+      "discovery": {
+        "title": "Descubrimiento",
+        "description": "Profundizamos en tus requisitos, entendemos los objetivos de tu negocio y definimos el alcance del proyecto."
+      },
+      "design": {
+        "title": "Diseño",
+        "description": "Nuestro equipo crea wireframes detallados, prototipos y la arquitectura técnica para tu aprobación."
+      },
+      "development": {
+        "title": "Desarrollo",
+        "description": "Desarrollo ágil con sprints regulares, revisiones de código y pruebas continuas para el control de calidad."
+      },
+      "deploy": {
+        "title": "Despliegue",
+        "description": "Despliegue fluido con pipelines de CI/CD, monitoreo, soporte continuo y mantenimiento diario."
+      }
+    }
+  },
+  "About": {
+    "badge": "Sobre Nosotros",
+    "mainTitle": "Construyendo el Software que Impulsa tu Negocio",
+    "paragraph1": "Somos un equipo de desarrolladores, diseñadores e ingenieros de DevOps apasionados, dedicados a ofrecer soluciones de software excepcionales. Con años de experiencia en diversas industrias, aportamos conocimiento e innovación a cada proyecto.",
+    "paragraph2": "Nuestra misión es ayudar a las empresas a aprovechar la tecnología para alcanzar sus objetivos. Ya sea que necesites una aplicación a medida, migración a la nube o una transformación digital completa, tenemos las habilidades y la experiencia para hacerlo realidad.",
+    "subRole": "Desarrollo de Software",
+    "statYears": "Años",
+    "statProjects": "Proyectos",
+    "statClients": "Clientes",
+    "highlights": [
+      "Equipo experimentado de desarrolladores senior",
+      "Metodología ágil para entregas más rápidas",
+      "Comunicación transparente en todo momento",
+      "Soporte y mantenimiento post-lanzamiento",
+      "Enfoque de desarrollo centrado en la seguridad",
+      "Arquitectura nativa de la nube escalable"
+    ]
+  },
+  "Contact": {
+    "badge": "Contáctanos",
+    "mainTitle": "Construyamos Algo Grande",
+    "mainSubtitle": "¿Listo para comenzar tu proyecto? Ponte en contacto y hablemos de cómo podemos ayudarte a hacer realidad tus ideas.",
+    "labelName": "Nombre",
+    "placeholderName": "Tu nombre",
+    "labelEmail": "Correo electrónico",
+    "placeholderEmail": "tu@empresa.com",
+    "errorEmail": "Por favor, introduce una dirección de correo válida.",
+    "labelSubject": "Asunto",
+    "placeholderSubject": "Consulta de proyecto",
+    "labelMessage": "Mensaje",
+    "placeholderMessage": "Cuéntanos sobre tu proyecto...",
+    "btnSend": "Enviar Mensaje",
+    "btnSending": "Enviando...",
+    "infoEmail": "Email",
+    "infoPhone": "Teléfono",
+    "infoLocation": "Ubicación",
+    "toastSuccessTitle": "¡Mensaje enviado!",
+    "toastSuccessDesc": "Nos pondremos en contacto contigo lo antes posible.",
+    "toastErrorTitle": "Error al enviar",
+    "toastErrorDesc": "Hubo un problema con el servicio de correo. Inténtalo más tarde.",
+    "toastCatchTitle": "Error inesperado",
+    "toastCatchDesc": "Revisa tu conexión a internet."
+  },
+  "Footer": {
+    "description": "Construyendo soluciones de software de alta calidad para empresas modernas. Desde el desarrollo a medida hasta el despliegue en la nube, te tenemos cubierto.",
+    "titleServices": "Servicios",
+    "titleCompany": "Compañía",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "services": {
+      "custom": "Desarrollo a Medida",
+      "mobile": "Aplicaciones Móviles",
+      "web": "Aplicaciones Web",
+      "cloud": "Despliegue en la Nube",
+      "devops": "DevOps",
+      "ai": "Desarrollo de IA",
+      "desktop": "Desarrollo de Escritorio",
+      "microservices": "Microservicios"
+    },
+    "company": {
+      "about": "Sobre Nosotros",
+      "work": "Nuestro Trabajo",
+      "careers": "Carreras",
+      "contact": "Contacto"
+    }
+  }
+  
 }

@@ -6,10 +6,13 @@ This project is a web application built with the Next.js framework. Based on the
 ## Technical Stack
 - **Framework:** Next.js
 - **Language:** TypeScript
+- **Internationalization:** `next-intl` (Support for English `en` and Spanish `es`)
 - **API/Data Handling:** Potentially uses AWS Smithy-based services (found `@smithy/types` in dependencies).
 
 ## Directory Structure (Standard Next.js)
-- `/app`: (Recommended) Contains the routes, layouts, and page components using the App Router.
+- `/messages`: Contains JSON translation files (e.g., `en.json`, `es.json`).
+- `/app/[locale]`: Localized routes using the App Router.
+- `proxy.ts`: Global request interception and i18n routing logic (used instead of middleware.ts).
 - `/pages`: (Legacy/Alternative) Contains page components for the Pages Router.
 - `/components`: Directory for reusable UI components.
 - `/public`: Static assets such as images, icons, and robots.txt.

@@ -1,15 +1,14 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono, Playfair_Display, Montserrat } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Toaster } from "@/components/ui/sonner"
-import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
 import { getMessages } from "next-intl/server"
-import Providers from "../Providers"; // El puente que creamos antes
+import Providers from "../Providers"
 
 const _inter = Inter({ subsets: ["latin"] });
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
@@ -37,17 +36,21 @@ export const metadata: Metadata = {
   },
 }
 
-type Props = {
+interface LocaleLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale: string}>;
-};
+  params: Promise<{ locale: string }>;
+}
 
+// Define supported locales based on your proxy.ts config
+const locales = ['en', 'es'];
 
-export default async function RootLayout({children, params}: Props) {
+export default async function LocaleLayout({
+  children,
+  params
+}: LocaleLayoutProps) {
   const { locale } = await params;
 
-  //Validacion de locale
-  if (!routing.locales.includes(locale as any)){
+  if (!locales.includes(locale)) {
     notFound();
   }
 
@@ -63,16 +66,13 @@ export default async function RootLayout({children, params}: Props) {
           disableTransitionOnChange
         >
           <Providers messages={messages} locale={locale}>
-
-          
-          {children}
+            {children}
           </Providers>
           <WhatsAppButton />
           <Toaster position="top-right" richColors />
-          
         </ThemeProvider>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

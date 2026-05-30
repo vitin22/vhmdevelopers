@@ -1,13 +1,149 @@
 {
-    "HomePage":
-    {
-        "title": "Welcome to my site",
-        "description": "The React Framework for the web",
-        "cta": "Get Started"
-    },
-    "AboutPage": {
-        "title": "About",
-        "description": "About page",
-        "team": "Our Team"
+  "HomePage": {
+    "title": "Welcome to VHM Developers"
+  },
+   "Navigation": {
+    "services": "Services",
+    "work": "Our Work",
+    "process": "Process",
+    "about": "About",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+ "Hero": {
+    "badge": "Building the future of software",
+    "titleNormal": "We Build & Deploy",
+    "titleHighlight": " Applications",
+    "titleScale": " That Scale",
+    "description": "From concept to deployment, we create high-performance software solutions. Custom development, cloud infrastructure, and DevOps expertise to accelerate your business.",
+    "btnStart": "Start Your Project",
+    "btnWork": "View Our Work",
+    "statApps": "Apps Built",
+    "statUptime": "Uptime"
+  },
+  "Services": {
+    "badge": "Our Services",
+    "mainTitle": "Everything You Need to Build & Ship",
+    "mainSubtitle": "From initial concept to production deployment, we provide end-to-end software development services.",
+    "items": {
+      "custom": { "title": "Custom Development", "description": "Tailored software solutions built from the ground up to meet your specific business needs and requirements." },
+      "ai": { "title": "AI Development", "description": "Integrating intelligent machine learning models and AI solutions to automate processes and gain insights." },
+      "microservices": { "title": "Microservices", "description": "Scalable and modular architecture design using microservices for highly available and maintainable systems." },
+      "desktop": { "title": "Desktop Applications", "description": "Powerful cross-platform desktop software for Windows, macOS, and Linux using modern technologies." },
+      "mobile": { "title": "Mobile Applications", "description": "Native and cross-platform mobile apps for iOS and Android with seamless user experiences." },
+      "web": { "title": "Web Applications", "description": "Modern, responsive web applications using cutting-edge frameworks and technologies." },
+      "cloud": { "title": "Cloud Deployment", "description": "Scalable cloud infrastructure on AWS, Azure, or GCP with automated deployment pipelines." },
+      "devops": { "title": "DevOps & CI/CD", "description": "Streamlined development workflows with continuous integration and deployment automation." },
+      "security": { "title": "Security & Compliance", "description": "Enterprise-grade security practices and compliance with industry standards." }
     }
+  },
+  "Work": {
+    "badge": "Our Work",
+    "mainTitle": "Projects We're Proud Of",
+    "mainSubtitle": "Explore some of our recent work and see how we've helped businesses transform their ideas into reality.",
+    "projects": {
+      "financeflow": {
+        "category": "Web App",
+        "description": "A comprehensive financial management platform with real-time analytics and automated reporting."
+      },
+      "healthtrack": {
+        "category": "Mobile App",
+        "description": "Mobile health monitoring application with wearable device integration and AI-powered insights."
+      },
+      "logichain": {
+        "category": "Enterprise",
+        "description": "Supply chain management system with IoT integration and predictive analytics."
+      }
+    }
+  },
+  "Process": {
+    "badge": "Our Process",
+    "mainTitle": "How We Work",
+    "mainSubtitle": "A proven methodology that ensures successful project delivery, every time.",
+    "steps": {
+      "discovery": {
+        "title": "Discovery",
+        "description": "We dive deep into your requirements, understand your business goals, and define the project scope."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Our team creates detailed wireframes, prototypes, and technical architecture for your approval."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Agile development with regular sprints, code reviews, and continuous testing for quality assurance."
+      },
+      "deploy": {
+        "title": "Deploy",
+        "description": "Seamless deployment with CI/CD pipelines, monitoring, and ongoing support and maintenance."
+      }
+    }
+  },
+  "About": {
+    "badge": "About Us",
+    "mainTitle": "Building Software That Powers Your Business",
+    "paragraph1": "We are a team of passionate developers, designers, and DevOps engineers dedicated to delivering exceptional software solutions. With years of experience across various industries, we bring expertise and innovation to every project.",
+    "paragraph2": "Our mission is to help businesses leverage technology to achieve their goals. Whether you need a custom application, cloud migration, or complete digital transformation, we have the skills and experience to make it happen.",
+    "subRole": "Software Development",
+    "statYears": "Years",
+    "statProjects": "Projects",
+    "statClients": "Clients",
+    "highlights": [
+      "Experienced team of senior developers",
+      "Agile methodology for faster delivery",
+      "Transparent communication throughout",
+      "Post-launch support and maintenance",
+      "Security-first development approach",
+      "Scalable cloud-native architecture"
+    ]
+  },
+  "Contact": {
+    "badge": "Contact Us",
+    "mainTitle": "Let's Build Something Great",
+    "mainSubtitle": "Ready to start your project? Get in touch and let's discuss how we can help bring your ideas to life.",
+    "labelName": "Name",
+    "placeholderName": "Your name",
+    "labelEmail": "Email",
+    "placeholderEmail": "you@company.com",
+    "errorEmail": "Please enter a valid email address.",
+    "labelSubject": "Subject",
+    "placeholderSubject": "Project inquiry",
+    "labelMessage": "Message",
+    "placeholderMessage": "Tell us about your project...",
+    "btnSend": "Send Message",
+    "btnSending": "Sending...",
+    "infoEmail": "Email",
+    "infoPhone": "Phone",
+    "infoLocation": "Location",
+    "toastSuccessTitle": "Message sent!",
+    "toastSuccessDesc": "We will get in touch with you as soon as possible.",
+    "toastErrorTitle": "Error sending",
+    "toastErrorDesc": "There was a problem with the mail service. Try again later.",
+    "toastCatchTitle": "Unexpected error",
+    "toastCatchDesc": "Please check your internet connection."
+  },
+  "Footer": {
+    "description": "Building high-quality software solutions for modern businesses. From custom development to cloud deployment, we've got you covered.",
+    "titleServices": "Services",
+    "titleCompany": "Company",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "services": {
+      "custom": "Custom Development",
+      "mobile": "Mobile Apps",
+      "web": "Web Applications",
+      "cloud": "Cloud Deployment",
+      "devops": "DevOps",
+      "ai": "AI Development",
+      "desktop": "Desktop Development",
+      "microservices": "Microservices"
+    },
+    "company": {
+      "about": "About Us",
+      "work": "Our Work",
+      "careers": "Careers",
+      "contact": "Contact"
+    }
+  }
 }

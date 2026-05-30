@@ -6,17 +6,60 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-
-const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Our Work" },
-  { href: "#process", label: "Process" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-]
+import { useTranslations, useLocale } from "next-intl"
+// 1. IMPORTANTE: Importa useRouter y usePathname desde tu archivo local de i18n
+// Si tu archivo se llama diferente o está en otra carpeta, ajusta esta ruta (ej. "@/navigation" o "@/i18n")
+import { useRouter, usePathname } from "@/i18n/routing"
 
 export function SoftwareNavigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const t = useTranslations("Navigation")
+  
+  // 2. Obtenemos el idioma activo ('en' o 'es') y los controladores de ruta
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const navLinks = [
+    { href: "#services", label: t("services")},
+    { href: "#work", label: t("work") },
+    { href: "#process", label: t("process") },
+    { href: "#about", label: t("about") },
+    { href: "#contact", label: t("contact") },
+  ]
+
+  // 3. Función para cambiar el prefijo de la URL manteniendo la misma vista
+  const handleLocaleChange = (nextLocale: "es" | "en") => {
+    router.replace(pathname, { locale: nextLocale })
+  }
+
+  // 4. Bloque del selector de idiomas con banderas (Reutilizable)
+  const LanguageSelector = () => (
+    <div className="flex items-center gap-1 bg-secondary/60 p-1 rounded-lg border border-border">
+      <button
+        onClick={() => handleLocaleChange("es")}
+        title="Español"
+        className={`px-2 py-0.5 rounded text-base transition-all ${
+          locale === "es"
+            ? "bg-background shadow-sm scale-105 border border-border/40"
+            : "opacity-40 hover:opacity-100"
+        }`}
+      >
+        🇪🇸
+      </button>
+      <button
+        onClick={() => handleLocaleChange("en")}
+        title="English"
+        className={`px-2 py-0.5 rounded text-base transition-all ${
+          locale === "en"
+            ? "bg-background shadow-sm scale-105 border border-border/40"
+            : "opacity-40 hover:opacity-100"
+        }`}
+      >
+        🇬🇧
+      </button>
+    </div>
+  )
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -44,9 +87,11 @@ export function SoftwareNavigation() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-2">
+        {/* Vista Escritorio: Botones alineados */}
+        <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
-          <Button>Get Started</Button>
+          <LanguageSelector />
+          <Button>{t("getStarted")}</Button>
         </div>
 
         <div className="flex md:hidden items-center gap-2">
@@ -61,6 +106,7 @@ export function SoftwareNavigation() {
         </div>
       </nav>
 
+      {/* Vista Móvil */}
       {isOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="px-6 py-4 flex flex-col gap-4">
@@ -74,7 +120,11 @@ export function SoftwareNavigation() {
                 {link.label}
               </Link>
             ))}
-            <Button className="w-full mt-2">Get Started</Button>
+            
+            <div className="flex items-center justify-between gap-4 pt-2 border-t border-border/60">
+              <LanguageSelector />
+              <Button className="flex-1">{t("getStarted")}</Button>
+            </div>
           </div>
         </div>
       )}
