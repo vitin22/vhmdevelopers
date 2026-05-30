@@ -1,54 +1,59 @@
-# --- ETAPA 1: Instalación de dependencias ---
+# Etapa 1: Dependencias
 FROM node:20-alpine AS deps
+# Se necesita libc6-compat para algunas dependencias de node en Alpine
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copiamos solo los archivos de dependencias para aprovechar el caché de Docker
+# Copiar archivos de definición de paquetes
 COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
+
+# Instalar dependencias detectando el package manager
 RUN \
   if [ -f package-lock.json ]; then npm ci; \
   elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else echo "No lockfile found." && exit 1; \
+  else echo "Lockfile not found." && exit 1; \
   fi
 
-# --- ETAPA 2: Construcción (Build) ---
+# Etapa 2: Builder
 FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Copiamos las dependencias instaladas en la etapa anterior
 COPY --from=deps /app/node_modules ./node_modules
-
-# ¡IMPORTANTE!: Copiamos TODO el proyecto. 
-# Esto incluye app/, components/, hooks/, tsconfig.json, etc.
 COPY . .
 
-# Desactivamos telemetría de Next.js
+# Desactivar telemetría de Next.js durante la compilación
 ENV NEXT_TELEMETRY_DISABLED 1
 
-# Ejecutamos el build (esto usa tu tsconfig.json y resuelve los @/*)
 RUN npm run build
 
-# --- ETAPA 3: Imagen de Ejecución (Runner) ---
+# Etapa 3: Runner (Imagen de producción)
 FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
-# Seguridad: Creamos un usuario no-root
+# Crear usuario de sistema para mayor seguridad
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copiamos la carpeta pública y el output standalone
+# Copiar archivos públicos y la carpeta estática
 COPY --from=builder /app/public ./public
+
+# Configurar permisos para la caché de prerenderizado
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Copiar el output standalone (requiere output: 'standalone' en next.config.js)
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
 EXPOSE 3000
-ENV PORT 3000
 
-# El comando para iniciar la app en modo standalone
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+# El archivo server.js es generado automáticamente por el modo standalone
 CMD ["node", "server.js"]
