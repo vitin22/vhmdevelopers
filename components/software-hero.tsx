@@ -66,6 +66,7 @@ export function SoftwareHero() {
               {/* Contenedor del Video: 
                 - En modo claro: Cuadrado normal sin bordes redondeados severos.
                 - En modo oscuro (dark:): Se vuelve circular (rounded-full), añade overflow-hidden para recortar el video y un sutil borde brillante.
+                -Arriba el scale-s150 es el tamaño del circulo del video
               */}
               <div className="relative w-full aspect-square flex items-center justify-center overflow-hidden transition-all duration-500 dark:rounded-full dark:border dark:border-primary/20 dark:shadow-[0_0_50px_rgba(var(--primary),0.1)]">
                 <video
