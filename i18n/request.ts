@@ -1,26 +1,17 @@
-import { getRequestConfig } from "next-intl/server";
-import { hasLocale } from "next-intl";
-import { routing } from "./routing";
-// i18n/request.ts
+import { getRequestConfig } from 'next-intl/server';
+import { routing } from './routing';
 
 export default getRequestConfig(async ({ requestLocale }) => {
-    // En Next 16, requestLocale puede venir de una promesa de los params
-    const locale = await requestLocale;
+  // Provide a static locale, fetch a user setting, etc.
+  let locale = await requestLocale;
 
-    // Validación manual ultra-segura para evitar el error de .length
-    const validLocales = ['en', 'es'];
-    const finalLocale = (locale && validLocales.includes(locale)) ? locale : 'es';
+  // Ensure that a valid locale is used
+  if (!locale || !routing.locales.includes(locale as any)) {
+    locale = routing.defaultLocale;
+  }
 
-    try {
-        return {
-            locale: finalLocale,
-            messages: (await import(`../messages/${finalLocale}.json`)).default,
-        };
-    } catch (error) {
-        // Si no encuentra el archivo, devolvemos el default para que no explote
-        return {
-            locale: 'es',
-            messages: (await import(`../messages/es.json`)).default,
-        };
-    }
+  return {
+    locale: locale as string,
+    messages: (await import(`../messages/${locale}.json`)).default
+  };
 });
